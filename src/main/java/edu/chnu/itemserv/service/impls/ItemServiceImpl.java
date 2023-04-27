@@ -8,7 +8,10 @@ package edu.chnu.itemserv.service.impls;
 */
 
 import edu.chnu.itemserv.model.Item;
+import edu.chnu.itemserv.repository.ItemRepository;
 import edu.chnu.itemserv.service.interfaces.IItemService;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -22,10 +25,18 @@ public class ItemServiceImpl implements IItemService {
             Arrays.asList(
                     new Item("1", "name1","desc1",now, now),
                     new Item("2", "name2","desc2",now, now),
-                    new Item("3", "name3","desc3",now, now)
+                    new Item("3", "name3","desc3",now, now),
+                    new Item( "name4","desc4")
             )
     );
 
+    @Autowired
+    ItemRepository repository;
+
+  //  @PostConstruct
+    public void init(){
+        repository.saveAll(items);
+    }
 
     @Override
     public Item create(Item item) {
@@ -50,6 +61,6 @@ public class ItemServiceImpl implements IItemService {
 
     @Override
     public List<Item> getAll() {
-        return items;
+        return repository.findAll();
     }
 }
