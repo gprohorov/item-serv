@@ -33,7 +33,7 @@ public class ItemServiceImpl implements IItemService {
     @Autowired
     ItemRepository repository;
 
-  //  @PostConstruct
+    @PostConstruct
     public void init(){
         repository.saveAll(items);
     }
