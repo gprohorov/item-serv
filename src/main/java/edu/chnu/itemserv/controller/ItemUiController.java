@@ -24,7 +24,6 @@ import java.util.List;
     @Autowired
     ItemServiceImpl service;
 
-
     @GetMapping("/")
     public String getAllItems(Model model){
         model.addAttribute("items", service.getAll());
