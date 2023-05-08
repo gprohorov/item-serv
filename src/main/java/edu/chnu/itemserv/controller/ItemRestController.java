@@ -3,9 +3,7 @@ package edu.chnu.itemserv.controller;
 import edu.chnu.itemserv.model.Item;
 import edu.chnu.itemserv.service.impls.ItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -34,6 +32,10 @@ import java.util.List;
     @GetMapping("/")
     public List<Item> getAllItems(){
         return service.getAll();
+    }
+    @DeleteMapping ("/{id}")
+    public void delete(@PathVariable String id){
+        service.delete(id);
     }
 
     // GET POST PUT DELETE

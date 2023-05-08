@@ -33,7 +33,7 @@ public class ItemServiceImpl implements IItemService {
     @Autowired
     ItemRepository repository;
 
-  //  @PostConstruct
+   //@PostConstruct
     public void init(){
         repository.saveAll(items);
     }
@@ -56,7 +56,7 @@ public class ItemServiceImpl implements IItemService {
 
     @Override
     public void delete(String id) {
-
+        repository.deleteById(id);
     }
 
     @Override
