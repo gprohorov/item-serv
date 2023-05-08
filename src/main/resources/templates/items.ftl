@@ -27,6 +27,5 @@
         </tr>
     </#list>
  </table>
-</div>
 </body>
 </html>
