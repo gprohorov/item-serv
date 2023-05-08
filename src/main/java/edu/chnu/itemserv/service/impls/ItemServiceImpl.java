@@ -40,18 +40,22 @@ public class ItemServiceImpl implements IItemService {
 
     @Override
     public Item create(Item item) {
-        return null;
+        item.setCreatedAt(LocalDateTime.now());
+        return repository.save(item);
     }
 
     @Override
     public Item get(String id) {
-        return null;
+        return repository.findById(id).orElse(null);
     }
 
     @Override
     public Item update(Item item) {
-
-        return null;
+        String id = item.getId();
+        Item toUpdate = this.get(id);
+        item.setCreatedAt(toUpdate.getCreatedAt());
+        item.setUpdatedAt(LocalDateTime.now());
+        return repository.save(item);
     }
 
     @Override

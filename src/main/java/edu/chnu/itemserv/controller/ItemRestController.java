@@ -35,8 +35,21 @@ import java.util.List;
         service.delete(id);
     }
 
-    // GET POST PUT DELETE
+    // GET POST PUT DELETE  CRUD - create read update delete
 
-    
+    @PostMapping("/")
+    public Item create(@RequestBody Item item){
+        return service.create(item);
+    }
+
+    @PutMapping("/")
+    public Item update(@RequestBody Item item){
+        return service.update(item);
+    }
+
+    @GetMapping("/{id}")
+    public Item getOne(@PathVariable String id) {
+        return  service.get(id);
+    }
 
 }
